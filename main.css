@@ -1,8 +1,19 @@
 .container {
     display:flex;
-    justify-content: center;
-   
-    
+    justify-content: center;    
+}
+
+button{
+    background-color:  lightblue; 
+    color: darkblue;
+    font-size: 20px;
+    padding: 20px;
+    font-family:'Courier New', Courier, monospace;
+    border: 2px solid rgb(247, 102, 50);
+}
+
+button:hover{
+    border-color: darkblue;
 }
 
 .calculator{
@@ -11,59 +22,41 @@
     background-color: rgb(184, 205, 212);
     padding: 40px;
     flex-direction: column;
-
-
-
 }
 
 .numbox {
     display: flex;
-    border: 3px solid rgb(247, 102, 50);
-    background-color: rgb(247, 102, 50);
     flex-direction: column;
     justify-content: center;
-      
+    border: 2px solid rgb(247, 102, 50);
+   
 }
 
 .result {
     display: flex;
-    border: 6px solid rgb(247, 102, 50);
+    border: 4px solid rgb(247, 102, 50);
     background-color:  lightblue;
     color: darkblue;
     font-size: 40px;
     padding: 10px;
-    margin-bottom: 10px;
-
-     
+    margin-bottom: 10px;     
 }
 
 .clear{
     display: flex;
+    flex: 1;
     margin-top: 10px; 
-    justify-content: space-between;
+    justify-content:space-between;
+    background-color:  rgb(184, 205, 212);
+    border: 2px solid rgb(247, 102, 50);    
+}
+
+.cl{
+    border: 2px solid rgb(247, 102, 50);
+    padding: 10px;
+    flex: 1;
 }
 
 .row{
     display: flex;
 }
-
-.num, .cl{
-    display: flex;
-    background-color: lightblue;
-    color:darkblue;
-    font-size: 20px;
-    font-family:'Courier New', Courier, monospace;
-       
-    
-}
-
-.num{
-    padding: 16px;
-    border: 3px solid rgb(247, 102, 50);
-}
-
-.cl{
-    padding: 10px;
-    border: 6px solid rgb(247, 102, 50);
-}
-

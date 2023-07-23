@@ -29,6 +29,8 @@ function operate (num1, num2, operator){
     }
 }
 
+
+
 console.log(operate(1, 2, '+'));
 console.log(operate(1, 2, '-'));
 console.log(operate(1, 2, 'x'));

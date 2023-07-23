@@ -1,17 +1,17 @@
 function add (num1, num2){
-    return num1 + num2;
+    return Number(num1) + Number(num2);
 }
 
 function subtract (num1, num2){
-    return num1 - num2;
+    return Number(num1) - Number(num2);
 }
 
 function multiply (num1, num2){
-    return num1 * num2;
+    return Number(num1) * Number(num2);
 }
 
 function divide (num1, num2){
-    return num1 / num2;
+    return Number(num1) / Number(num2);
 }
 
 function operate (num1, num2, operator){
@@ -40,20 +40,31 @@ let operator = "";
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let type = button.getAttribute('id');
+        
         if (type === 'op'){
+            //Displays operator entered
             display = "";
             result.textContent = button.textContent;
+            
             operator = button.textContent;
         }
 
         else if (type === 'eq') {
-           console.log("test");
+           result.textContent = operate(num1, num2, operator);
+           
            
         }
         else{
+            //Displays numbers entered
             display += button.textContent;
             result.textContent = display;
-            num1 += button.textContent;
+            
+            if (operator === ""){
+                num1 += button.textContent;
+            }
+            else{
+                num2 += button.textContent;
+            }
         }
         
         

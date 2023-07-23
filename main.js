@@ -57,13 +57,11 @@ let display= "";
 let num1 = "";
 let num2 = "";
 let operator ="";
-let eqdone = false;
-
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let type = button.getAttribute('id');
-        
+        console.log(type);
         if (type === 'op'){
             //Displays operator entered
             display = "";
@@ -81,8 +79,7 @@ buttons.forEach((button) => {
             operator = button.textContent;         
         }
 
-        else if (type === 'eq') {
-                  
+        else if (type === 'eq') {                 
            //calculates result if two numbers have been entered
            if (num1 !== "" && num2 !== ""){
             result.textContent = operate(num1, num2, operator);
@@ -94,9 +91,16 @@ buttons.forEach((button) => {
             else if (num1 !== ""){
                 result.textContent = num1;
             }
-           
-           
         }
+
+        // clear everything if Clear pressed
+        else if (type === 'cl') {     
+            num1="";
+            num2="";
+            operator="";
+            display="";
+        }
+
         
         else{
         // store num1 if an operator HASN'T been selected

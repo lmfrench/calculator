@@ -29,9 +29,17 @@ function operate (num1, num2, operator){
     }
 }
 
+//Event listener on calculator numbers
+const buttons = document.querySelectorAll('button');
+const result = document.querySelector('#result')
 
+console.log(buttons);
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
 
-console.log(operate(1, 2, '+'));
-console.log(operate(1, 2, '-'));
-console.log(operate(1, 2, 'x'));
-console.log(operate(1, 2, '/'));
+         result.textContent = button.textContent;
+         
+        
+    });
+});
+

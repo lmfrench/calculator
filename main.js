@@ -11,7 +11,12 @@ function multiply (num1, num2){
 }
 
 function divide (num1, num2){
-    return Number(num1) / Number(num2);
+    if (num2 == 0){
+        return "ERROR";
+    }
+    else{
+        return Number(num1) / Number(num2);
+    }
 }
 
 function operate (num1, num2, operator){
@@ -26,6 +31,22 @@ function operate (num1, num2, operator){
         break;
         case '/': return divide(num1, num2);      
         
+    }
+}
+
+function checkDecimal (num){
+    //if number already has a decimal pt, do nothing
+    if (num.includes(".")){
+        return num;
+    }
+    // if num is empty, add the 0 at the beginning
+    if (num === ""){
+        return "0.";
+    }
+    // if number has no dec pt. add it
+    else{
+        num += ".";
+        return num;
     }
 }
 
@@ -48,47 +69,68 @@ buttons.forEach((button) => {
             display = "";
             result.textContent = button.textContent;
             
+            //if this isn't the first calculation (i.e both num variables have values), then do the next calculation
             if (num2 !== ""){
-                //if both number variables have values, then do the calculation
                 num1 = operate(num1, num2, operator);
                 result.textContent = num1;
                 // then clear num 2
                 num2 = "";
-            }
-            
-            //stores operator if first calculation
-            operator = button.textContent;
+            }            
 
-         
+            //stores operator if first calculation
+            operator = button.textContent;         
         }
 
         else if (type === 'eq') {
-           //calculates result
-           result.textContent = operate(num1, num2, operator);
-           //stores result and clears operator
-           num1 = operate(num1, num2, operator);
-           num2 = "";
-                 
+                  
+           //calculates result if two numbers have been entered
+           if (num1 !== "" && num2 !== ""){
+            result.textContent = operate(num1, num2, operator);
+            //stores result and clears num2
+            num1 = operate(num1, num2, operator);
+            num2 = "";              
+            }
+            //or if only num1 entered, continue to show num1
+            else if (num1 !== ""){
+                result.textContent = num1;
+            }
+           
            
         }
-  
+        
         else{
-            //Displays numbers entered
-            display += button.textContent;
-            result.textContent = display;
-            
-            // stores number
+        // store num1 if an operator HASN'T been selected
             if (operator === ""){
-                num1 += button.textContent;
+                //check decimal is not being selected for second time
+                if (type === 'decimal'){
+                    num1 = checkDecimal(num1);              
+                }
+                // stores number
+                else {
+                    num1 += button.textContent;
+                  //displays numbers entered                    
+                }
+                display = num1;
+                result.textContent = display;
             }
+
+        // store num2 if an operator HAS been selected
             else{
-                num2 += button.textContent;
+                //check decimal is not being selected for second time
+                if (type === 'decimal'){
+                    num2 = checkDecimal(num2);
+                    display += button.textContent;
+                    result.textContent = display;
+                }
+                else{
+                    // stores number
+                    num2 += button.textContent;
+                }
+                //displays numbers entered
+                display = num2;
+                result.textContent = display;
             }
-        }
-        
-        
-        
-                 
+        }        
     });
 });
 

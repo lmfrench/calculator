@@ -136,27 +136,33 @@ buttons.forEach((button) => {
         // store num1 if an operator HASN'T been selected
             if (operator === ""){
                 //check decimal is not being selected for second time
-                if (type === 'decimal'){
-                    num1 = checkDecimal(num1);              
-                }
-                // stores number
-                else {
-                    num1 += button.textContent;
+                if(num1.length < 8){ //prevent number being larger than result screen
+                    if (type === 'decimal'){
+                        num1 = checkDecimal(num1);              
+                    }
+                    // stores number
+                    else {
+                        num1 += button.textContent;
                   //displays numbers entered                    
+                    }
+                    result.textContent = num1;
                 }
-                result.textContent = num1;
-            }
+            }   
 
         // store num2 if an operator HAS been selected
             else{
                 //check decimal is not being selected for second time
                 if (type === 'decimal'){
-                    num2 = checkDecimal(num2);
-                    result.textContent = num2;
+                    if(num2.length < 8){
+                        num2 = checkDecimal(num2);
+                        result.textContent = num2;
+                    }
                 }
                 else{
-                    // stores number
-                    num2 += button.textContent;
+                    if(num2.length < 8){
+                        // stores number
+                        num2 += button.textContent;
+                    }
                 }
                 //displays numbers entered
                 result.textContent = num2;

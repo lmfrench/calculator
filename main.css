@@ -32,10 +32,6 @@ button:hover, #cl:hover, #del:hover{
    
 }
 
-p{
-    display: flex;
-}
-
 #result {
     display: flex;
     border: 4px solid rgb(247, 102, 50);
@@ -44,7 +40,8 @@ p{
     font-size: 40px;
     padding: 10px;
     margin-bottom: 10px;
-    height: 40px;     
+    height: 40px;   
+    font-family:'Courier New', Courier, monospace;    
 }
 
 .clear{

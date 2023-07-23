@@ -1,21 +1,39 @@
 function add (num1, num2){
-    return Number(num1) + Number(num2);
+    let num = Number(num1) + Number(num2);
+    
+    if (num.toString().length > 8){
+        return Math.round(num * 1000000)/1000000;
+    }
+    return num;
 }
 
 function subtract (num1, num2){
-    return Number(num1) - Number(num2);
+    let num = Number(num1) - Number(num2);
+    if (num.toString().length > 8){
+        return Math.round(num * 1000000)/1000000;
+    }
+    return num;
 }
 
 function multiply (num1, num2){
-    return Number(num1) * Number(num2);
+    let num = Number(num1) * Number(num2);
+    if (num.toString().length > 8){
+        return Math.round(num * 1000000)/1000000;
+    }
+    return num;
 }
 
 function divide (num1, num2){
+    
     if (num2 == 0){
         return "ERROR";
     }
     else{
-        return Number(num1) / Number(num2);
+        let num = Number(num1) / Number(num2);
+        if (num.toString().length > 8){
+            return Math.round(num * 1000000)/1000000;
+        }
+        return num;
     }
 }
 
@@ -50,10 +68,10 @@ function checkDecimal (num){
     }
 }
 
+
 //Event listener on calculator numbers
 const buttons = document.querySelectorAll('button');
 const result = document.querySelector('#result')
-let display= "";
 let num1 = "";
 let num2 = "";
 let operator ="";
@@ -61,20 +79,19 @@ let operator ="";
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let type = button.getAttribute('id');
-        console.log(type);
+        
         if (type === 'op'){
             //Displays operator entered
-            display = "";
             result.textContent = button.textContent;
             
             //if this isn't the first calculation (i.e both num variables have values), then do the next calculation
             if (num2 !== ""){
                 num1 = operate(num1, num2, operator);
+                
                 result.textContent = num1;
                 // then clear num 2
                 num2 = "";
             }            
-
             //stores operator if first calculation
             operator = button.textContent;         
         }
@@ -98,13 +115,11 @@ buttons.forEach((button) => {
             //check whether on num1 or num2
             if (num2 === ""){
                 num1 = num1.slice(0,-1);
-                display = num1;
-                result.textContent = display;
+                result.textContent = num1;
             }
             else {
                 num2 = num2.slice(0,-1);
-                display = num2;
-                result.textContent = display;
+                result.textContent = num2;
             }
         }
 
@@ -114,8 +129,7 @@ buttons.forEach((button) => {
             num1="";
             num2="";
             operator="";
-            display="";
-            result.textContent = display;
+            result.textContent = "";
         }
 
         else{
@@ -130,8 +144,7 @@ buttons.forEach((button) => {
                     num1 += button.textContent;
                   //displays numbers entered                    
                 }
-                display = num1;
-                result.textContent = display;
+                result.textContent = num1;
             }
 
         // store num2 if an operator HAS been selected
@@ -139,16 +152,14 @@ buttons.forEach((button) => {
                 //check decimal is not being selected for second time
                 if (type === 'decimal'){
                     num2 = checkDecimal(num2);
-                    display += button.textContent;
-                    result.textContent = display;
+                    result.textContent = num2;
                 }
                 else{
                     // stores number
                     num2 += button.textContent;
                 }
                 //displays numbers entered
-                display = num2;
-                result.textContent = display;
+                result.textContent = num2;
             }
         }        
     });

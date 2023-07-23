@@ -35,7 +35,9 @@ const result = document.querySelector('#result')
 let display= "";
 let num1 = "";
 let num2 = "";
-let operator = "";
+let operator ="";
+let eqdone = false;
+
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -46,19 +48,36 @@ buttons.forEach((button) => {
             display = "";
             result.textContent = button.textContent;
             
+            if (num2 !== ""){
+                //if both number variables have values, then do the calculation
+                num1 = operate(num1, num2, operator);
+                result.textContent = num1;
+                // then clear num 2
+                num2 = "";
+            }
+            
+            //stores operator if first calculation
             operator = button.textContent;
+
+         
         }
 
         else if (type === 'eq') {
+           //calculates result
            result.textContent = operate(num1, num2, operator);
-           
+           //stores result and clears operator
+           num1 = operate(num1, num2, operator);
+           num2 = "";
+                 
            
         }
+  
         else{
             //Displays numbers entered
             display += button.textContent;
             result.textContent = display;
             
+            // stores number
             if (operator === ""){
                 num1 += button.textContent;
             }

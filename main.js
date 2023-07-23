@@ -93,15 +93,31 @@ buttons.forEach((button) => {
             }
         }
 
+       // delete last number if delete pressed
+        else if (type === 'del') {
+            //check whether on num1 or num2
+            if (num2 === ""){
+                num1 = num1.slice(0,-1);
+                display = num1;
+                result.textContent = display;
+            }
+            else {
+                num2 = num2.slice(0,-1);
+                display = num2;
+                result.textContent = display;
+            }
+        }
+
         // clear everything if Clear pressed
+        
         else if (type === 'cl') {     
             num1="";
             num2="";
             operator="";
             display="";
+            result.textContent = display;
         }
 
-        
         else{
         // store num1 if an operator HASN'T been selected
             if (operator === ""){

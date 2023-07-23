@@ -12,7 +12,7 @@ button{
     border: 2px solid rgb(247, 102, 50);
 }
 
-button:hover{
+button:hover, #cl:hover, #del:hover{
     border-color: darkblue;
 }
 

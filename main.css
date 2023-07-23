@@ -54,7 +54,7 @@ p{
     border: 2px solid rgb(247, 102, 50);    
 }
 
-.cl{
+#cl, #del{
     border: 2px solid rgb(247, 102, 50);
     padding: 10px;
     flex: 1;
